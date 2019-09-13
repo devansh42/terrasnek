@@ -29,13 +29,10 @@ class TestTFEBaseTestCase(unittest.TestCase):
         cls._logger = logging.getLogger(cls.__class__.__name__)
         cls._logger.setLevel(logging.INFO)
 
-        # TODO: some validation on the inputs / env vars
         cls._api = TFE(TFE_TOKEN)
         cls._test_username = TEST_USERNAME
         cls._test_email = TEST_EMAIL
         cls._test_team_name = TEST_TEAM_NAME
-
-        # TODO: name these more clearly
         cls._test_org_name = TEST_ORG_NAME
 
         # TODO: make these env vars?
