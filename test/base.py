@@ -15,7 +15,7 @@ from terrasnek.api import TFE
 
 from ._constants import \
     TFE_TOKEN, TEST_EMAIL, TEST_ORG_NAME, \
-    TEST_ORG_NAME_PAID, TEST_USERNAME, TEST_TEAM_NAME, \
+    TEST_USERNAME, TEST_TEAM_NAME, \
     GITHUB_TOKEN, GITHUB_SECRET
 
 
@@ -37,7 +37,6 @@ class TestTFEBaseTestCase(unittest.TestCase):
 
         # TODO: name these more clearly
         cls._test_org_name = TEST_ORG_NAME
-        cls._test_org_name_paid = TEST_ORG_NAME_PAID
 
         # TODO: make these env vars?
         cls._test_state_path = "./test/testdata/terraform/terrasnek_unittest.tfstate"
@@ -45,7 +44,7 @@ class TestTFEBaseTestCase(unittest.TestCase):
             "./test/testdata/terraform/terrasnek_unittest_config_version.tar.gz"
         cls._plan_export_tarball_target_path = "/tmp/terrasnek_unittest.tar.gz"
 
-        cls._api.set_organization(cls._test_org_name_paid)
+        cls._api.set_organization(cls._test_org_name)
 
     @staticmethod
     def _name_with_random(name):
@@ -193,11 +192,12 @@ class TestTFEBaseTestCase(unittest.TestCase):
         }
 
     def _get_org_create_payload(self):
+        name = self._name_with_random("org")
         return {
             "data": {
                 "type": "organizations",
                 "attributes": {
-                    "name": self._test_org_name,
+                    "name": name,
                     "email": self._test_email
                 }
             }
