@@ -12,6 +12,10 @@ jobs:
             python -m venv venv
             . venv/bin/activate
             pip install -r pip-reqs.txt
+      - run:
+          name: run tests
+          command: |
+          	python3 -m unittest test/*.py
 workflows:
   version: 2
   test_and_deploy:
