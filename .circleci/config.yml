@@ -15,6 +15,7 @@ jobs:
       - run:
           name: run tests
           command: python3 -m unittest test/*.py
+
 workflows:
   version: 2
   test_and_deploy:
