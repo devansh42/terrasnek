@@ -2,14 +2,14 @@ version: 2
 jobs:
   live_test:
     docker:
-      - image: eklhad/eklhad-web-circleci:0.1
+      - image: circleci/python:3.6.1
     working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
+            python -m venv venv
             . venv/bin/activate
             pip install -r pip-reqs.txt
 workflows:
