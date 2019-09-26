@@ -14,8 +14,7 @@ jobs:
             pip install -r pip-reqs.txt
       - run:
           name: run tests
-          command: |
-          	python3 -m unittest test/*.py
+          command: python3 -m unittest test/*.py
 workflows:
   version: 2
   test_and_deploy:
