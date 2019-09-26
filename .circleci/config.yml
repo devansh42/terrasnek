@@ -3,7 +3,6 @@ jobs:
   live_test:
     docker:
       - image: circleci/python:3.6.1
-    working_directory: /go/src/github.com/dahlke/eklhad/
     steps:
       - checkout
       - run:
